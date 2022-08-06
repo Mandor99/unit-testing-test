@@ -1,0 +1,24 @@
+1. install => {
+    1. npm install --save-dev jest typescript ts-jest @types/jest jest-environment-jsdom
+
+    2. yarn ts-jest config:init ==>> {
+            testEnvironment: "jsdom",
+            globals: {
+                'ts-jest': {
+                tsconfig: 'tsconfig.test.json',
+                },
+            },
+            setupFilesAfterEnv: ['./src/setup-jest.ts'], ==>> then create setup-jest.ts in src => {import "@testing-library/jest-dom"}
+    }
+    3. yarn add @testing-library/react @testing-library/user-event@13.5.0 @testing-library/dom @testing-library/jest-dom
+    4. tsconfig.test.json => {
+                {
+            "extends": "./tsconfig.json",
+            "compilerOptions": {
+                "jsx": "react-jsx"
+            }
+        }
+    }
+}
+
+2. * don't get the new value before click on the BTN
