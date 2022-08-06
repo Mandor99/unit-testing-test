@@ -1,4 +1,4 @@
-import {render, screen} from '@testing-library/react'
+import {render, screen, waitFor, waitForElementToBeRemoved} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Counter from './Counter'
 
@@ -57,6 +57,32 @@ describe('test counter with amount more than 1', () => {
         const {countBtn} = getElementsByAmount('decrement')
         userEvent.click(countBtn)
         expect(screen.getByText(/current count: 5/i)).toBeInTheDocument()
+    })
+})
+
+//6. test async increment
+describe('test async counter', () => {
+    beforeEach(() => render(<Counter desc={'async counter'} initCount={0} />))
+
+    test('test async increment by 1', async () => {
+        userEvent.click(screen.getByRole('button', {name: 'async increment'}))
+        // const newCount = await screen.findByText(/current count: 1/i)
+        // expect(newCount).toBeInTheDocument()
+        await waitFor(() => {expect(screen.getByText('Current Count: 1')).toBeInTheDocument()})
+    })
+})
+
+describe('test loader txt', () => {
+    // beforeEach()
+
+    test.only('test exist loader if removed count <15', async () => {
+        const {debug}= render(<Counter desc={'www'} initCount={13} />)
+        userEvent.type(screen.getByRole('spinbutton'), '{selectall}7')
+        userEvent.click(screen.getByRole('button', {name: 'increment'}))
+        // await waitForElementToBeRemoved(() => {screen.queryByText('counter is still smaller')})
+        await waitFor(() => {expect(screen.queryByText('counter is still smaller')).not.toBeInTheDocument()})
+        debug()
+
     })
 })
 
