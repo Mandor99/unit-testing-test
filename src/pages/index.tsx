@@ -3,8 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Counter from '../components/counter/Counter'
+import MockComp from '../components/mockComp/MockComp'
 
 const Home: NextPage = () => {
+  const propFunc = ():void => {
+    console.log('prop function')
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -14,6 +18,7 @@ const Home: NextPage = () => {
       </Head>
 
      <Counter desc={'counter comp'} initCount={0} />
+     <MockComp propFunc={propFunc}/>
     </div>
   )
 }

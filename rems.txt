@@ -22,3 +22,8 @@
 }
 
 2. * don't get the new value before click on the BTN
+3. test math random => {
+    1. const r = jest.spyOn(Math, 'random')
+    2. in beforeEach >> r.mockReturnValue(0) => value will be 0 beforeEach every test
+    3. expect(func(3,5)).toBe(3) => the value will be 3 what u expect and write it.
+}
