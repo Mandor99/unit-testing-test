@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import Comp2 from "./Comp2"
 
 type Props = {
@@ -5,10 +6,11 @@ type Props = {
 }
 
 const MockComp = ({propFunc}: Props) => {
-    propFunc()
+
   return (
     <div>
         <Comp2 />
+        <button onClick={propFunc}>click prop func</button>
     </div>
   )
 }
