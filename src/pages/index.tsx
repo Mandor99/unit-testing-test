@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Counter from '../components/counter/Counter'
 import MockComp from '../components/mockComp/MockComp'
+import { PhotosList } from '../components/photos/AsyncPhotos'
 
 const Home: NextPage = () => {
   const propFunc = ():void => {
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
 
      <Counter desc={'counter comp'} initCount={0} />
      <MockComp propFunc={propFunc}/>
+     <PhotosList />
     </div>
   )
 }

@@ -27,3 +27,8 @@
     2. in beforeEach >> r.mockReturnValue(0) => value will be 0 beforeEach every test
     3. expect(func(3,5)).toBe(3) => the value will be 3 what u expect and write it.
 }
+
+// later ==>> {
+    1. module.css
+    2. catch(e: ???) in typescript
+}
